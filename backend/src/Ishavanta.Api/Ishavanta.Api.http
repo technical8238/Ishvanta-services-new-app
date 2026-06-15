@@ -1,0 +1,8 @@
+@Ishavanta.Api_HostAddress = http://localhost:5041
+
+GET {{Ishavanta.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+

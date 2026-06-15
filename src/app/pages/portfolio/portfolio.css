@@ -1,0 +1,100 @@
+.page-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.premium-page {
+  padding: 2rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.three-up {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hero-copy h1 {
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 800;
+  max-width: 14ch;
+  margin: 0;
+}
+
+.eyebrow {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-alt);
+  font-size: 0.8rem;
+  margin: 0 0 1rem;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: linear-gradient(135deg, var(--surface), var(--surface-soft));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-soft);
+}
+
+.card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.75;
+}
+
+.tag {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background: var(--accent);
+  color: white;
+}
+
+@media (max-width: 980px) {
+  .three-up {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid {
+    padding: 0 1rem;
+  }
+}

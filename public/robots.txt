@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.ishavantaonecallservice.com/sitemap.xml
+Host: https://www.ishavantaonecallservice.com
+
+User-agent: AdsBot-Google
+Allow: /
+
+Disallow: /api/
+Disallow: /assets/secret/
+

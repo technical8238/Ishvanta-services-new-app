@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ISHVANTA — Navbar</title>
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="navbar-container">
+    <div class="nav-left">
+      <img src="assets/ishvanta logo.png" alt="Ishvanta Services logo" class="logo"/>
+  
+    </div>
+
+    <nav class="center-nav" role="navigation" aria-label="Primary">
+      <ul class="nav-menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Our Work</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Service Areas</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <button class="cta">Get Free Quote</button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-drawer" aria-hidden="true">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Our Work</a></li>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">Service Areas</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+// Mobile drawer toggle
+const hamb = document.querySelector('.hamburger');
+const drawer = document.querySelector('.mobile-drawer');
+if(hamb){
+  hamb.addEventListener('click', ()=>{
+    const expanded = hamb.getAttribute('aria-expanded') === 'true';
+    hamb.setAttribute('aria-expanded', String(!expanded));
+    drawer.style.display = expanded ? 'none' : 'block';
+    drawer.setAttribute('aria-hidden', String(expanded));
+    setTimeout(()=> drawer.classList.toggle('open'), 10);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+Crop & export instructions for the IC House icon (create a transparent PNG):
+
+1) Recommended (Photoshop/GIMP):
+ - Open "ishvanta logo.png".
+ - Use the Rectangular or Lasso tool to select only the top IC house symbol (the circular/house portion above the text).
+ - Copy selection to a new layer. Hide or delete the black background layer.
+ - Add a layer mask and clean edges with a soft eraser if needed.
+ - Trim canvas to selection (Image > Trim).
+ - Export as PNG with transparency. Export at 2x sizes for crispness: 140px, 110px, 90px (name them logo-ic-house@2x.png, logo-ic-house@2x-110.png, logo-ic-house@2x-90.png).
+ - In CSS use width:70px (desktop), 55px (tablet), 45px (mobile) so the 2x assets stay sharp.
+
+2) Command-line (ImageMagick) example (install ImageMagick first):
+ - Convert black to transparent and trim automatically:
+   magick "ishvanta logo.png" -fuzz 12% -transparent "#000000" -trim -resize 140x140 PNG32:logo-ic-house@2x.png
+ - Repeat with resize 110x110 and 90x90 for other sizes.
+
+3) Place the exported PNG(s) in an "assets" folder at the project root: assets/logo-ic-house@2x.png
+
+4) Open navbar.html to preview. If edges show halo, increase -fuzz a bit or refine mask in an editor.
+
+If you want, upload the exported PNG and I will update the navbar to embed it exactly.

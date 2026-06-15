@@ -2,11 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "700a6871-2a12-48ee-8c84-50c5cb2be5c1"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Ishanta_Technologies": {
+    "Ishavanta_One_Call_Service": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -64,10 +65,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Ishanta_Technologies:build:production"
+              "buildTarget": "Ishavanta_One_Call_Service:build:production"
             },
             "development": {
-              "buildTarget": "Ishanta_Technologies:build:development"
+              "buildTarget": "Ishavanta_One_Call_Service:build:development"
             }
           },
           "defaultConfiguration": "development"
