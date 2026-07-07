@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ishavanta.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71e095a0053aef1cd9fec9aaa6431a8024a8a256")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cd5bb2be36eb13e7f48c5b5a648079660ff97c7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ishavanta.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ishavanta.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
