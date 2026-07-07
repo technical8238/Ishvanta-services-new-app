@@ -1,146 +1,94 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { LucideAngularModule } from 'lucide-angular';
+import {
+  ArrowRight,
+  ChevronRight,
+  Clock3,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+  PhoneCall,
+  ShieldCheck,
+  Youtube
+} from 'lucide-angular';
 
-interface SocialLink {
-  name: string;
-  icon: string;
-  url: string;
-  ariaLabel: string;
+interface FooterLink {
+  label: string;
+  href: string;
 }
 
-interface FooterSection {
-  title: string;
-  links: Array<{ label: string; href: string }>;
+interface ServiceItem {
+  label: string;
+  icon: any;
+}
+
+interface SocialLink {
+  ariaLabel: string;
+  icon: any;
+  url: string;
 }
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  currentYear: number = new Date().getFullYear();
-  email: string = '';
-  newsletterSubmitted = false;
-  newsletterError = '';
+  readonly currentYear = new Date().getFullYear();
+  readonly ChevronRightIcon = ChevronRight;
+  readonly MapPinIcon = MapPin;
+  readonly PhoneCallIcon = PhoneCall;
+  readonly MailIcon = Mail;
+  readonly Clock3Icon = Clock3;
+  readonly ShieldCheckIcon = ShieldCheck;
+  readonly FacebookIcon = Facebook;
+  readonly InstagramIcon = Instagram;
+  readonly LinkedinIcon = Linkedin;
+  readonly MessageCircleIcon = MessageCircle;
+  readonly YoutubeIcon = Youtube;
 
-  companyInfo = {
-    name: 'ISHVANTA SERVICES',
-    tagline: 'One Call, All Solutions',
-    founded: 2022,
-    email: 'ishvantaonecallservice@gmail.com',
-    phone: '+91 88497 01206',
-    whatsapp: '+918849701206'
-  };
+  readonly companyName = 'ISHVANTA SERVICES';
+  readonly tagline = 'ISHVANTA ONE CALL SERVICES';
+  readonly heroHeading = 'One call.';
+  readonly heroSubheading = 'All solutions.';
+  readonly heroDescription = 'Premium home support across Vadodara and Gujarat with verified technicians, transparent pricing and responsive service delivery.';
+  readonly contactPhone = '+91 88497 01206';
+  readonly contactEmail = 'ishvantaonecallservice@gmail.com';
+  readonly contactLocation = 'Vadodara, Gujarat';
 
-  socialLinks: SocialLink[] = [
-    {
-      name: 'LinkedIn',
-      icon: '🔗',
-      url: 'https://www.linkedin.com/company/ishavanta-one-call-service',
-      ariaLabel: 'Follow us on LinkedIn'
-    },
-    {
-      name: 'Twitter',
-      icon: '𝕏',
-      url: 'https://twitter.com/ishavanta_onecall_service',
-      ariaLabel: 'Follow us on Twitter'
-    },
-    {
-      name: 'Facebook',
-      icon: '📘',
-      url: 'https://www.facebook.com/ishavantaonecallservice',
-      ariaLabel: 'Follow us on Facebook'
-    },
-    {
-      name: 'Email',
-      icon: '✉️',
-      url: 'mailto:contact@ishavantaonecallservice.com',
-      ariaLabel: 'Send us an email'
-    }
+  readonly companyLinks: FooterLink[] = [
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Our Work', href: '/our-work' },
+    { label: 'Reviews', href: '/reviews' },
+    { label: 'Service Areas', href: '/service-areas' },
+    { label: 'Contact Us', href: '/contact' }
   ];
 
-  footerSections: FooterSection[] = [
-    {
-      title: 'Company',
-      links: [
-        { label: 'Home', href: '/' },
-        { label: 'About Us', href: '/about' },
-        { label: 'Services', href: '/services' },
-        { label: 'Our Work', href: '/our-work' },
-        { label: 'Reviews', href: '/reviews' },
-        { label: 'Service Areas', href: '/service-areas' },
-        { label: 'Contact Us', href: '/contact' }
-      ]
-    },
-    {
-      title: 'Our Services',
-      links: [
-        { label: 'Electrical Service', href: '/services' },
-        { label: 'Plumbing Service', href: '/services' },
-        { label: 'House Painting Service', href: '/services' },
-        { label: 'Furniture Service', href: '/services' },
-        { label: 'Kitchen Appliances Service', href: '/services' },
-        { label: 'AC & Fridge Service', href: '/services' },
-        { label: 'Two Wheeler Service', href: '/services' },
-        { label: 'Fabrication Service', href: '/services' },
-        { label: 'CCTV Installation Service', href: '/services' }
-      ]
-    },
-    {
-      title: 'Support',
-      links: [
-        { label: 'Contact Us', href: '/contact' },
-        { label: 'FAQ', href: '/faq' },
-        { label: 'Terms & Conditions', href: '/terms' },
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Sitemap', href: '/sitemap' }
-      ]
-    }
+  readonly serviceItems: ServiceItem[] = [
+    { label: 'Electrical Service', icon: ArrowRight },
+    { label: 'Plumbing Service', icon: ArrowRight },
+    { label: 'House Painting', icon: ArrowRight },
+    { label: 'Furniture Service', icon: ArrowRight },
+    { label: 'Kitchen Appliances Service', icon: ArrowRight },
+    { label: 'AC & Fridge Service', icon: ArrowRight },
+    { label: 'Two Wheeler Service', icon: ArrowRight },
+    { label: 'Fabrication Service', icon: ArrowRight },
+    { label: 'CCTV Installation Service', icon: ArrowRight }
   ];
 
-  contactInfo = [
-    { icon: '📧', label: 'Email', value: this.companyInfo.email, href: `mailto:${this.companyInfo.email}` },
-    { icon: '📱', label: 'Phone', value: this.companyInfo.phone, href: `tel:${this.companyInfo.phone}` },
-    {
-      icon: '💬',
-      label: 'WhatsApp',
-      value: 'Live chat',
-      href: `https://wa.me/${this.companyInfo.whatsapp.replace(/\D/g, '')}`
-    }
+  readonly socialLinks: SocialLink[] = [
+    { ariaLabel: 'Follow us on Facebook', icon: this.FacebookIcon, url: 'https://www.facebook.com/ishavantaonecallservice' },
+    { ariaLabel: 'Follow us on Instagram', icon: this.InstagramIcon, url: 'https://www.instagram.com/ishavantaonecallservice' },
+    { ariaLabel: 'Follow us on LinkedIn', icon: this.LinkedinIcon, url: 'https://www.linkedin.com/company/ishavanta-one-call-service' },
+    { ariaLabel: 'Chat with us on WhatsApp', icon: this.MessageCircleIcon, url: 'https://wa.me/918849701206' },
+    { ariaLabel: 'Watch us on YouTube', icon: this.YoutubeIcon, url: 'https://www.youtube.com/@ishvanta' }
   ];
-
-  onNewsletterSubmit(): void {
-    this.newsletterError = '';
-
-    if (!this.email) {
-      this.newsletterError = 'Please enter your email address.';
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(this.email)) {
-      this.newsletterError = 'Please enter a valid email address.';
-      return;
-    }
-
-    this.newsletterSubmitted = true;
-    this.email = '';
-
-    setTimeout(() => {
-      this.newsletterSubmitted = false;
-    }, 4500);
-  }
-
-  openSocialLink(url: string): void {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
-
-  getYearsSinceFoundation(): number {
-    return this.currentYear - this.companyInfo.founded;
-  }
 }
-

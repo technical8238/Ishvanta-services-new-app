@@ -1,41 +1,317 @@
-<section class="page-shell premium-page">
-  <header class="hero-copy">
-    <p class="eyebrow">Service Areas</p>
-    <h1>Structured coverage across Vadodara and nearby Gujarat regions.</h1>
-    <p class="lead">Reliable maintenance and repair services available in the neighborhoods and service areas that matter most.</p>
-  </header>
+<div class="service-areas-page">
+  <!-- ===== SECTION 1: HERO SECTION ===== -->
+  <section class="hero-section" @fadeInUp>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Professional Home Services Across Vadodara</h1>
+        <p class="hero-subtitle">We provide fast, reliable and affordable home maintenance services across Vadodara and nearby locations.</p>
+        
+        <div class="hero-buttons">
+          <button class="btn btn-primary" (click)="scrollToBooking()">Book a Service</button>
+          <a class="btn btn-secondary" href="https://wa.me/918849701206" target="_blank" rel="noreferrer">
+            <span class="whatsapp-icon">💬</span>
+            WhatsApp Now
+          </a>
+          <button class="btn btn-tertiary" (click)="scrollToMap()">View Coverage Map</button>
+        </div>
 
-  <div class="locations-grid">
-    <div class="location-card">Vadodara</div>
-    <div class="location-card">Manjalpur</div>
-    <div class="location-card">Tarsali</div>
-    <div class="location-card">Waghodia</div>
-    <div class="location-card">Ajwa</div>
-    <div class="location-card">Akota</div>
-    <div class="location-card">Gotri</div>
-    <div class="location-card">Karelibaug</div>
-    <div class="location-card">Harni</div>
-    <div class="location-card">Sama</div>
-    <div class="location-card">Makarpura</div>
-  </div>
+        <div class="hero-quick-info">
+          <div class="info-item">
+            <span class="info-icon">✓</span>
+            <span class="info-text">Same Day Service Available</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">⏱️</span>
+            <span class="info-text">30-60 Min Response Time</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="area-shell">
-    <div class="area-map">
-      <div class="map-placeholder">Interactive map coming soon</div>
-    </div>
-    <div class="area-details">
-      <div class="section-heading">
-        <span class="eyebrow">Coverage Information</span>
-        <h2>Trusted local service with fast response across every neighborhood.</h2>
-      </div>
-      <p>Our field teams cover domestic and commercial properties across Vadodara and surrounding districts. We focus on fast arrival times, verified technicians, and seamless communication.</p>
-      <div class="area-contact-card">
-        <h3>Get service in your area</h3>
-        <p>Phone: <a href="tel:+918849701206">+91 88497 01206</a></p>
-        <p>Email: <a href="mailto:ishvantaonecallservice@gmail.com">ishvantaonecallservice@gmail.com</a></p>
-        <p>Location: Vadodara, Gujarat</p>
-        <p><strong>Business Hours:</strong> Mon-Sat, 8:00 AM – 8:00 PM</p>
+      <div class="hero-illustration">
+        <div class="illustration-card">
+          <div class="illustration-content">
+            <div class="tech-icon">👨‍🔧</div>
+            <div class="location-badge">📍 Vadodara Region</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+
+    <div class="hero-background">
+      <div class="gradient-shape shape-1"></div>
+      <div class="gradient-shape shape-2"></div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: COVERAGE STATS ===== -->
+  <section class="coverage-stats">
+    <div class="stats-container">
+      <div class="stat-card" @fadeInUp>
+        <div class="stat-number">{{ jobsCompleted }}+</div>
+        <div class="stat-label">Jobs Completed</div>
+      </div>
+      <div class="stat-card" @fadeInUp>
+        <div class="stat-number">{{ happyCustomers }}+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-card" @fadeInUp>
+        <div class="stat-number">{{ serviceAreas }}+</div>
+        <div class="stat-label">Service Areas</div>
+      </div>
+      <div class="stat-card" @fadeInUp>
+        <div class="stat-number">{{ sameDayService }}%</div>
+        <div class="stat-label">Same Day Service</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: SERVICE AREA GRID ===== -->
+  <section class="service-areas-section">
+    <div class="section-header">
+      <h2>Our Service Coverage Areas</h2>
+      <p>Premium home services available in all these locations</p>
+    </div>
+
+    <div class="areas-grid">
+      <div *ngFor="let area of serviceAreasList" 
+           class="area-card premium-card"
+           [ngClass]="{ 'hovered': hoveredCard[area.name] }"
+           (mouseenter)="onCardHover(area.name, 'hover')"
+           (mouseleave)="onCardHover(area.name, 'normal')"
+           @fadeInUp>
+        <div class="area-icon">{{ area.icon }}</div>
+        <h3 class="area-name">{{ area.name }}</h3>
+        <p class="area-service">Same Day Service Available</p>
+        <button class="area-link" (click)="scrollToBooking()">Get Service →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: INTERACTIVE MAP ===== -->
+  <section class="interactive-map-section" id="interactive-map">
+    <div class="section-header">
+      <h2>Serving Customers Across Vadodara</h2>
+      <p>We cover all major neighborhoods and surrounding areas</p>
+    </div>
+
+    <div class="map-container">
+      <div class="map-placeholder">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118395.35999662997!2d73.1305!3d22.3072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcb5778b5d8d1%3A0x2ff006c0b58a6e5!2sVadodara!5e0!3m2!1sen!2sin!4v1234567890"
+          width="100%"
+          height="100%"
+          style="border: none; border-radius: 20px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="map-info">
+        <h3>Coverage Area</h3>
+        <p>Serving customers across Vadodara and nearby areas including:</p>
+        <ul class="coverage-list">
+          <li>✓ All residential areas</li>
+          <li>✓ Commercial properties</li>
+          <li>✓ Modern apartments and villas</li>
+          <li>✓ Industrial locations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: WHY CUSTOMERS CHOOSE US ===== -->
+  <section class="why-choose-us">
+    <div class="section-header">
+      <h2>Why Customers Choose Ishvanta</h2>
+      <p>Premium service quality with professional excellence</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div *ngFor="let benefit of benefits; let i = index" 
+           class="benefit-card premium-card"
+           [ngClass]="{ 'hovered': hoveredCard['benefit-' + i] }"
+           (mouseenter)="onCardHover('benefit-' + i, 'hover')"
+           (mouseleave)="onCardHover('benefit-' + i, 'normal')"
+           @fadeInUp>
+        <div class="benefit-icon">{{ benefit.icon }}</div>
+        <h3 class="benefit-title">{{ benefit.title }}</h3>
+        <p class="benefit-description">{{ benefit.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: AVAILABLE SERVICES ===== -->
+  <section class="available-services">
+    <div class="section-header">
+      <h2>Services We Provide</h2>
+      <p>Complete home maintenance solutions under one roof</p>
+    </div>
+
+    <div class="services-grid">
+      <div *ngFor="let service of services; let i = index"
+           class="service-card premium-card"
+           [ngClass]="{ 'hovered': hoveredCard['service-' + i] }"
+           (mouseenter)="onCardHover('service-' + i, 'hover')"
+           (mouseleave)="onCardHover('service-' + i, 'normal')"
+           @fadeInUp>
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-name">{{ service.name }}</h3>
+        <p class="service-description">{{ service.description }}</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: RESPONSE TIME ===== -->
+  <section class="response-time">
+    <div class="section-header">
+      <h2>Our Response Time</h2>
+      <p>We're always ready to serve you</p>
+    </div>
+
+    <div class="response-timeline">
+      <div class="timeline-card" @fadeInUp>
+        <div class="timeline-icon emergency">🚨</div>
+        <h3>Emergency Calls</h3>
+        <p class="response-time-text">30–60 Minutes</p>
+        <p class="disclaimer">Depending on location and technician availability</p>
+      </div>
+
+      <div class="timeline-connector"></div>
+
+      <div class="timeline-card" @fadeInUp>
+        <div class="timeline-icon standard">📅</div>
+        <h3>Standard Booking</h3>
+        <p class="response-time-text">Same Day</p>
+        <p class="disclaimer">Service on the same day</p>
+      </div>
+
+      <div class="timeline-connector"></div>
+
+      <div class="timeline-card" @fadeInUp>
+        <div class="timeline-icon scheduled">⏰</div>
+        <h3>Scheduled Booking</h3>
+        <p class="response-time-text">Your Preferred Time</p>
+        <p class="disclaimer">Book for a date and time you prefer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: CUSTOMER REVIEWS ===== -->
+  <section class="customer-reviews">
+    <div class="section-header">
+      <h2>What Our Customers Say</h2>
+      <p>Real experiences from satisfied customers</p>
+    </div>
+
+    <div class="testimonials-container">
+      <div class="testimonial-card premium-card" @fadeInUp>
+        <div class="testimonial-header">
+          <div class="customer-avatar">{{ currentTestimonial.image }}</div>
+          <div class="customer-info">
+            <h4>{{ currentTestimonial.name }}</h4>
+            <p>{{ currentTestimonial.area }} • {{ currentTestimonial.service }}</p>
+          </div>
+        </div>
+
+        <div class="stars">
+          <span *ngFor="let i of [1,2,3,4,5]" class="star" [ngClass]="{ 'filled': i <= currentTestimonial.rating }">⭐</span>
+        </div>
+
+        <p class="review-text">{{ currentTestimonial.review }}</p>
+
+        <div class="testimonial-indicators">
+          <button *ngFor="let t of testimonials; let i = index"
+                  class="indicator"
+                  [ngClass]="{ 'active': i === currentTestimonialIndex }"
+                  (click)="currentTestimonialIndex = i">
+          </button>
+        </div>
+      </div>
+
+      <div class="testimonials-stats">
+        <div class="stat">
+          <div class="stat-value">4.9★</div>
+          <div class="stat-text">Average Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">500+</div>
+          <div class="stat-text">Reviews</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">98%</div>
+          <div class="stat-text">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 9: FAQ ===== -->
+  <section class="faq-section">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find answers to common questions about our services</p>
+    </div>
+
+    <div class="faq-container">
+      <div *ngFor="let item of faqItems; let i = index"
+           class="faq-item"
+           @fadeInUp>
+        <button class="faq-question"
+                (click)="toggleFAQ(i)"
+                [ngClass]="{ 'open': item.open }">
+          <span class="question-text">{{ item.question }}</span>
+          <span class="faq-icon">{{ item.open ? '−' : '+' }}</span>
+        </button>
+        
+        <div class="faq-answer" [ngClass]="{ 'show': item.open }">
+          <p>{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 10: CONTACT CTA ===== -->
+  <section class="contact-cta" id="booking-cta">
+    <div class="cta-content">
+      <h2 class="cta-headline">Need a Technician in Your Area?</h2>
+      <p class="cta-subtext">Book our professional services today with just one call or message</p>
+
+      <div class="cta-buttons">
+        <a href="tel:+918849701206" class="btn btn-primary btn-large">📞 Call Now</a>
+        <a href="https://wa.me/918849701206" target="_blank" class="btn btn-secondary btn-large">💬 WhatsApp Now</a>
+        <button class="btn btn-tertiary btn-large">📅 Book Service</button>
+      </div>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <p class="label">Phone</p>
+            <a href="tel:+918849701206">+91 88497 01206</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <p class="label">Email</p>
+            <a href="mailto:ishvantaonecallservice@gmail.com">ishvantaonecallservice@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">🕐</span>
+          <div>
+            <p class="label">Business Hours</p>
+            <p>Mon-Sat, 8:00 AM – 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-background">
+      <div class="gradient-bg"></div>
+    </div>
+  </section>
+</div>

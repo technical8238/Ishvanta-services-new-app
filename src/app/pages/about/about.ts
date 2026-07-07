@@ -24,23 +24,27 @@ export class AboutPage implements AfterViewInit, OnDestroy {
   private counterObserver: IntersectionObserver | null = null;
 
   ngAfterViewInit(): void {
-    // Start testimonial rotation
-    this.testimonialTimer = setInterval(() => this.nextTestimonial(), 6000);
+    // Start testimonial rotation only in browser environments.
+    if (typeof window !== 'undefined') {
+      this.testimonialTimer = setInterval(() => this.nextTestimonial(), 6000);
+    }
 
-    // Animate counters when in view
-    this.counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
-          const target = Number(el.getAttribute('data-target') || '0');
-          this.animateCounter(el, target);
-          this.counterObserver?.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
+    // Animate counters when in view using IntersectionObserver if available.
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window && typeof document !== 'undefined') {
+      this.counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = Number(el.getAttribute('data-target') || '0');
+            this.animateCounter(el, target);
+            this.counterObserver?.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
 
-    const els = Array.from(document.querySelectorAll('.counter')) as HTMLElement[];
-    els.forEach(e => this.counterObserver?.observe(e));
+      const els = Array.from(document.querySelectorAll('.counter')) as HTMLElement[];
+      els.forEach(e => this.counterObserver?.observe(e));
+    }
   }
 
   nextTestimonial() {

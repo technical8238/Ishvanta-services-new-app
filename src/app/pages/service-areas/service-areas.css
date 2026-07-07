@@ -1,116 +1,317 @@
-.page-shell {
+.service-areas-page {
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  background: var(--bg);
+}
+
+.hero-section,
+.coverage-stats,
+.service-areas-section,
+.interactive-map-section,
+.why-choose-us,
+.available-services,
+.response-time,
+.customer-reviews,
+.faq-section,
+.contact-cta {
+  padding: 3rem 0;
+}
+
+.hero-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 3rem;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.1fr minmax(320px, 0.9fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 4vw, 4.2rem);
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.hero-subtitle {
+  max-width: 620px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-illustration {
+  position: relative;
+}
+
+.illustration-card {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(37, 99, 235, 0.12) 100%);
+  padding: 2.5rem;
+  border-radius: 28px;
+  box-shadow: var(--shadow-md);
+}
+
+.illustration-content {
+  text-align: center;
+}
+
+.coverage-stats .stats-container,
+.benefits-grid,
+.services-grid,
+.response-timeline,
+.testimonials-container,
+.faq-container,
+.contact-details,
+.areas-grid,
+.benefits-grid,
+.service-card,
+.benefit-card,
+.testimonial-card,
+.timeline-card,
+.faq-item {
   display: grid;
   gap: 1.5rem;
-  padding: 2.5rem 0;
 }
 
-.hero-copy h1 {
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  margin: 0;
-}
-
-.lead {
-  color: #64748B;
-  margin-top: 1rem;
-  max-width: 60ch;
-}
-
-.locations-grid {
-  display: grid;
+.stats-container {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.location-card {
-  padding: 1.4rem 1.5rem;
-  border-radius: 24px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 20px 48px rgba(15, 76, 255, 0.08);
-  font-weight: 700;
-  color: #0F172A;
-}
-
-.area-shell {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 1.75rem;
-  margin-top: 2rem;
-}
-
-.area-map {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 28px;
-  box-shadow: 0 24px 60px rgba(15, 76, 255, 0.08);
-  min-height: 420px;
-  overflow: hidden;
-}
-
-.map-placeholder {
-  display: grid;
-  place-items: center;
-  height: 100%;
-  color: #475569;
-  font-size: 1rem;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.area-details {
-  display: grid;
   gap: 1.25rem;
 }
 
-.area-details h2 {
-  margin: 0;
-  color: #0F172A;
+.stat-card {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
-.area-details p {
-  margin: 0;
-  color: #475569;
-  line-height: 1.8;
+.stat-number {
+  font-size: 2.75rem;
+  color: var(--text-dark);
 }
 
-.area-contact-card {
+.section-header,
+.section-header h2,
+.section-header p {
+  text-align: center;
+}
+
+.areas-grid,
+.benefits-grid,
+.services-grid,
+.testimonials-container,
+.contact-details,
+.faq-container,
+.service-card,
+.benefit-card,
+.timeline-card,
+.faq-item {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.area-card,
+.benefit-card,
+.service-card,
+.timeline-card,
+.testimonial-card,
+.faq-item,
+.map-info,
+.contact-panel,
+.contact-panel a,
+.contact-item,
+.cta-shell {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.area-card,
+.benefit-card,
+.service-card,
+.timeline-card,
+.testimonial-card,
+.faq-item {
   padding: 1.75rem;
-  border-radius: 28px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 24px 60px rgba(15, 76, 255, 0.08);
 }
 
-.area-contact-card h3 {
-  margin-top: 0;
-  color: #0F172A;
+.area-card:hover,
+.benefit-card:hover,
+.service-card:hover,
+.timeline-card:hover,
+.testimonial-card:hover,
+.faq-question.open {
+  border-color: rgba(37, 99, 235, 0.18);
 }
 
-.area-contact-card p {
-  margin: 0.6rem 0;
-  color: #475569;
+.area-name,
+.benefit-title,
+.service-name,
+.timeline-card h3,
+.testimonial-header h4,
+.faq-question {
+  color: var(--text-dark);
 }
 
-.area-contact-card a {
-  color: #0F4CFF;
-  text-decoration: none;
+.area-link,
+.service-link,
+.cta-buttons .btn,
+.cta-buttons .btn-primary,
+.cta-buttons .btn-secondary,
+.cta-buttons .btn-tertiary {
+  min-width: auto;
 }
 
-.area-contact-card a:hover {
-  text-decoration: underline;
+.area-link,
+.service-link,
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-primary);
+}
+
+.interactive-map-section .map-container {
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.map-placeholder {
+  min-height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+}
+
+.map-info {
+  padding: 2rem;
+}
+
+.response-timeline {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+.response-timeline::before {
+  display: none;
+}
+
+.timeline-card {
+  padding: 2rem;
+}
+
+.timeline-icon {
+  margin: 0 auto 1rem;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-primary);
+}
+
+.customer-reviews .reviews-stats,
+.customer-reviews .testimonial-card,
+.faq-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.testimonials-container {
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+}
+
+.review-text {
+  font-style: italic;
+}
+
+.faq-item {
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer.show {
+  max-height: 400px;
+}
+
+.contact-cta {
+  position: relative;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.cta-buttons {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.contact-details {
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  color: var(--text-dark);
+}
+
+.contact-icon {
+  font-size: 1.75rem;
+}
+
+.contact-item .label {
+  color: var(--text-muted);
 }
 
 @media (max-width: 980px) {
-  .locations-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .area-shell {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  .locations-grid {
+  .hero-content,
+  .stats-container,
+  .areas-grid,
+  .map-container,
+  .testimonials-container,
+  .response-timeline,
+  .faq-container,
+  .cta-buttons,
+  .contact-details {
     grid-template-columns: 1fr;
   }
 }

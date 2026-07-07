@@ -1,68 +1,130 @@
-<footer class="footer-container">
-  <!-- Gradient Background -->
-  <div class="footer-bg"></div>
+<footer class="footer-shell">
+  <div class="footer-overlay"></div>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <section class="footer-card footer-card--brand" aria-label="Brand overview">
+        <div class="brand-header">
+          <img class="brand-logo" src="assets/ishvanta-logo.png" alt="Ishvanta Services logo" />
+          <div>
+            <!-- <p class="brand-label">{{ tagline }}</p> -->
+            <!-- <p class="brand-name">{{ companyName }}</p> -->
+          </div>
+        </div>
 
-  <!-- Main Content -->
-  <div class="footer-content">
-    <div class="footer-panel footer-brand-panel">
-      <span class="footer-eyebrow">Ishvanta One Call Services</span>
-      <h3 class="footer-heading">Premium maintenance, one trusted contact.</h3>
-      <p class="footer-copy">
-        Expert electrical, plumbing, painting, furniture, kitchen appliance, AC & fridge, CCTV, fabrication, and two-wheeler service across Vadodara and Gujarat.
-      </p>
-      <div class="footer-actions">
-        <a class="footer-action footer-action-primary" href="tel:+918849701206">Call Now</a>
-        <a class="footer-action footer-action-secondary" href="https://wa.me/918849701206" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <div class="brand-copy">
+          <h2 class="brand-headline">{{ heroHeading }}<br />{{ heroSubheading }}</h2>
+          <p class="brand-description">{{ heroDescription }}</p>
+        </div>
+
+        <div class="brand-actions">
+          <a class="btn btn-primary" href="tel:+918849701206" aria-label="Call now">
+            <lucide-icon [img]="PhoneCallIcon" class="btn-icon"></lucide-icon>
+            <span>Call Now</span>
+          </a>
+          <a class="btn btn-secondary" href="https://wa.me/918849701206" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp chat">
+            <lucide-icon [img]="MessageCircleIcon" class="btn-icon"></lucide-icon>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="footer-card footer-card--links" aria-labelledby="footer-company-heading">
+        <div class="section-heading-wrap">
+          <h3 id="footer-company-heading" class="section-heading">COMPANY</h3>
+        </div>
+        <ul class="footer-links" aria-label="Company navigation links">
+          <li *ngFor="let link of companyLinks">
+            <a class="footer-link" [href]="link.href">
+              <lucide-icon [img]="ChevronRightIcon" class="link-icon"></lucide-icon>
+              <span>{{ link.label }}</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="footer-card footer-card--services" aria-labelledby="footer-services-heading">
+        <div class="section-heading-wrap">
+          <h3 id="footer-services-heading" class="section-heading">OUR SERVICES</h3>
+        </div>
+        <div class="service-grid">
+          <a class="service-item" *ngFor="let service of serviceItems" href="/services">
+            <span class="service-icon-shell">
+              <lucide-icon [img]="service.icon" class="service-icon"></lucide-icon>
+            </span>
+            <span>{{ service.label }}</span>
+          </a>
+        </div>
+      </section>
+      <span>
+      <section class="footer-card footer-card--contact" aria-labelledby="footer-contact-heading">
+        <div class="section-heading-wrap">
+          <h3 id="footer-contact-heading" class="section-heading">CONTACT</h3>
+        </div>
+
+        <div class="contact-panel">
+          <a class="contact-chip" href="https://maps.google.com/?q=Vadodara,Gujarat" target="_blank" rel="noopener noreferrer">
+            <lucide-icon [img]="MapPinIcon" class="contact-icon"></lucide-icon>
+            <span>
+              <p class="contact-label">{{ contactLocation }}</p>
+              <p class="contact-subtext">Location</p>
+            </span>
+          </a>
+          <span class="divider" aria-hidden="true"></span>
+          <a class="contact-chip" href="tel:+918849701206">
+            <lucide-icon [img]="PhoneCallIcon" class="contact-icon"></lucide-icon>
+            <span>
+              <p class="contact-label">{{ contactPhone }}</p>
+              <p class="contact-subtext">Phone</p>
+            </span>
+          </a>
+          <span class="divider" aria-hidden="true"></span>
+          <a class="contact-chip" href="mailto:{{ contactEmail }}">
+            <lucide-icon [img]="MailIcon" class="contact-icon"></lucide-icon>
+            <span>
+              <p class="contact-label">{{ contactEmail }}</p>
+              <p class="contact-subtext">Email</p>
+            </span>
+          </a>
+          <span class="divider" aria-hidden="true"></span>
+          <div class="contact-chip contact-chip--static">
+            <lucide-icon [img]="Clock3Icon" class="contact-icon"></lucide-icon>
+            <span>
+              <p class="contact-label">Mon–Sun | 8:00 AM – 9:00 PM</p>
+              <p class="contact-subtext">Working hours</p>
+            </span>
+          </div>
+        </div>
+
+        <div class="contact-bottom">
+          <div class="social-links" aria-label="Social media links">
+            <a class="social-link" *ngFor="let social of socialLinks" [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.ariaLabel">
+              <lucide-icon [img]="social.icon" class="social-icon"></lucide-icon>
+            </a>
+          </div>
+        </div>
+      </section>
+      </span>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="bottom-item bottom-item--left">
+        <lucide-icon [img]="ShieldCheckIcon" class="bottom-icon"></lucide-icon>
+        <span>© {{ currentYear }} ISHVANTA SERVICES. All Rights Reserved.</span>
+      </div>
+      <nav class="bottom-nav" aria-label="Footer legal links">
+        <a href="/privacy">Privacy Policy</a>
+        <span class="bottom-separator">•</span>
+        <a href="/terms">Terms & Conditions</a>
+        <span class="bottom-separator">•</span>
+        <a href="/refund-policy">Refund Policy</a>
+        <span class="bottom-separator">•</span>
+        <a href="/sitemap">Sitemap</a>
+      </nav>
+      <div class="bottom-item bottom-item--right">
+        <span>Designed with</span>
+        <span class="heart">♥</span>
+        <span>by Ishvanta Services</span>
       </div>
     </div>
-
-    <div class="footer-panel footer-links-panel">
-      <h4 class="section-title">Company</h4>
-      <nav class="links-list">
-        <a *ngFor="let link of footerSections[0].links" [href]="link.href" class="footer-link">{{ link.label }}</a>
-      </nav>
-    </div>
-
-    <div class="footer-panel footer-links-panel">
-      <h4 class="section-title">Our Services</h4>
-      <nav class="links-list">
-        <a *ngFor="let link of footerSections[1].links" [href]="link.href" class="footer-link">{{ link.label }}</a>
-      </nav>
-    </div>
-
-    <div class="footer-panel footer-links-panel">
-      <h4 class="section-title">Support</h4>
-      <nav class="links-list">
-        <a *ngFor="let link of footerSections[2].links" [href]="link.href" class="footer-link">{{ link.label }}</a>
-      </nav>
-    </div>
   </div>
-
-
-  <!-- Bottom Section -->
-  <div class="footer-bottom">
-    <p class="footer-copy-small">&copy; {{ currentYear }} {{ companyInfo.name }}. All rights reserved.</p>
-
-    <nav class="legal-links">
-      <a href="/privacy" class="legal-link">Privacy Policy</a>
-      <span class="divider">•</span>
-      <a href="/terms" class="legal-link">Terms & Conditions</a>
-      <span class="divider">•</span>
-      <a href="/sitemap" class="legal-link">Sitemap</a>
-    </nav>
-  </div>
-
-  <!-- WhatsApp FAB Link -->
-  <a
-    [href]="'https://wa.me/' + companyInfo.whatsapp.replace(/\\D/g, '')"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-link"
-    aria-label="Chat with us on WhatsApp"
-    title="Chat with us on WhatsApp"
-  >
-    <span class="whatsapp-icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-<path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
-</svg></span>
-  </a>
 </footer>

@@ -1,24 +1,179 @@
-<section class="page-shell premium-page">
-  <header class="hero-copy">
-    <p class="eyebrow">Reviews</p>
-    <h1>Customer feedback that reflects trust, quality, and professionalism.</h1>
-    <p class="lead">Real reviews from clients who rely on Ishvanta One Call Services for fast, reliable maintenance and repair.</p>
-  </header>
-  <div class="review-grid">
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>“The team responded quickly and delivered excellent electrical repairs. The whole process felt premium and professional.”</p>
-      <div class="reviewer"><strong>Rohit Mehta</strong><span>Homeowner</span></div>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>“Highly recommended for commercial maintenance. Their work on our office HVAC system was impressive and efficient.”</p>
-      <div class="reviewer"><strong>Priya Sharma</strong><span>Operations Manager</span></div>
-    </article>
-    <article class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p>“Transparent pricing and verified technicians. We use Ishvanta for all our property services.”</p>
-      <div class="reviewer"><strong>Karan Desai</strong><span>Property Owner</span></div>
-    </article>
-  </div>
+<section class="reviews-shell">
+  <section class="hero-section">
+    <div class="hero-copy">
+      <span class="eyebrow">Reviews</span>
+      <h1>Trusted by Hundreds of Happy Customers</h1>
+      <p class="hero-subtitle">Real customer experiences from homeowners and businesses across Vadodara who trust Ishvanta One Call Services.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking-cta">Book Service</a>
+        <a class="btn btn-secondary" href="#write-review">Write a Review</a>
+        <a class="btn btn-tertiary" href="https://wa.me/918849701206" target="_blank" rel="noreferrer">WhatsApp Now</a>
+      </div>
+
+      <div class="hero-badges">
+        <div class="badge-card">
+          <span class="badge-title">Brand</span>
+          <strong>{{ brand }}</strong>
+        </div>
+        <div class="badge-card">
+          <span class="badge-title">Tagline</span>
+          <strong>{{ tagline }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-illustration" aria-hidden="true">
+      <div class="illustration-frame">
+        <div class="illustration-glow"></div>
+        <div class="illustration-avatar">👨‍🔧</div>
+        <div class="illustration-copy">
+          <span>Happy customers</span>
+          <strong>100% satisfaction focused service</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="summary-section">
+    <div class="summary-card rating-card glass-card">
+      <div class="rating-chip">★★★★★</div>
+      <strong class="rating-value">{{ ratingSummary.average }}/5</strong>
+      <p class="rating-subtext">Based on {{ ratingSummary.totalReviews }} Customer Reviews</p>
+    </div>
+
+    <div class="distribution-panel glass-card">
+      <h2>Rating Distribution</h2>
+      <div class="distribution-list">
+        <ng-container *ngFor="let item of ratingSummary.distribution">
+          <div class="distribution-row">
+            <span>{{ item.label }}</span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" [style.width.%]="item.width"></div>
+            </div>
+            <span>{{ item.count }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+  <section class="filter-section">
+    <div class="filter-header">
+      <h2>Filter Reviews</h2>
+      <p>Select a service category to see the most relevant customer stories.</p>
+    </div>
+    <div class="filter-buttons">
+      <button *ngFor="let filter of filters"
+              type="button"
+              [class.active]="selectedFilter === filter"
+              (click)="selectFilter(filter)">
+        {{ filter }}
+      </button>
+    </div>
+  </section>
+
+  <section class="reviews-grid">
+    <ng-container *ngFor="let review of filteredReviews">
+      <article class="review-card glass-card">
+        <div class="review-card-top">
+          <img class="reviewer-photo" [src]="review.photo" alt="{{ review.name }} photo" loading="lazy" />
+          <div>
+            <div class="reviewer-name">{{ review.name }}</div>
+            <div class="reviewer-meta">{{ review.location }} • {{ review.service }}</div>
+          </div>
+          <span class="verified-badge">Verified</span>
+        </div>
+
+        <div class="review-score">{{ '★'.repeat(review.rating) }}{{ '☆'.repeat(5 - review.rating) }}</div>
+        <p class="review-text">{{ review.text }}</p>
+        <div class="review-date">Reviewed {{ review.date }}</div>
+
+        <div class="before-after">
+          <div class="media-card">
+            <span>Before</span>
+            <img [src]="review.beforeImage" alt="Before {{ review.service }}" loading="lazy" />
+          </div>
+          <div class="media-card">
+            <span>After</span>
+            <img [src]="review.afterImage" alt="After {{ review.service }}" loading="lazy" />
+          </div>
+        </div>
+      </article>
+    </ng-container>
+  </section>
+
+  <section class="video-section">
+    <div class="section-header">
+      <span class="eyebrow">Video Testimonials</span>
+      <h2>Real Stories. Real Customers.</h2>
+    </div>
+
+    <div class="video-grid">
+      <article *ngFor="let video of videoTestimonials" class="video-card glass-card">
+        <div class="video-thumb" [style.backgroundImage]="'url(' + video.thumbnail + ')'">
+          <button type="button" class="play-button" aria-label="Play testimonial from {{ video.name }}">▶</button>
+        </div>
+        <div class="video-copy">
+          <strong>{{ video.name }}</strong>
+          <span>{{ video.service }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="trust-section">
+    <div class="section-header">
+      <span class="eyebrow">Why Customers Trust Us</span>
+      <h2>Premium service pillars that build confidence</h2>
+    </div>
+    <div class="trust-grid">
+      <article *ngFor="let card of trustCards" class="trust-card glass-card">
+        <div class="trust-icon">{{ card.icon }}</div>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="satisfaction-section">
+    <div class="section-header">
+      <span class="eyebrow">Customer Satisfaction</span>
+      <h2>Performance metrics that matter</h2>
+    </div>
+    <div class="stats-grid">
+      <article *ngFor="let stat of satisfactionStats" class="stat-card glass-card">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="google-section">
+    <div class="google-card glass-card">
+      <div class="google-copy">
+        <span class="google-icon">G</span>
+        <div>
+          <h2>Google Reviews</h2>
+          <p>Highly rated by customers across Vadodara with strong service credibility.</p>
+        </div>
+      </div>
+      <div class="google-actions">
+        <a class="btn btn-secondary" href="https://www.google.com/maps" target="_blank" rel="noreferrer">View All Reviews on Google</a>
+        <a class="btn btn-primary" href="https://www.google.com" target="_blank" rel="noreferrer">Write a Google Review</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="booking-cta">
+    <div class="cta-copy">
+      <h2>Ready to Experience Our Professional Service?</h2>
+      <p>Book trusted home service support with Ishvanta One Call Services and get help from verified experts today.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="#booking-cta">Book Service</a>
+      <a class="btn btn-tertiary" href="https://wa.me/918849701206" target="_blank" rel="noreferrer">WhatsApp Now</a>
+      <a class="btn btn-secondary" href="tel:+918849701206">Call Now</a>
+    </div>
+  </section>
 </section>

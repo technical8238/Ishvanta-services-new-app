@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { FooterComponent } from '../../shared/footer.component';
 
 interface FeatureCard {
   title: string;
@@ -33,7 +32,7 @@ interface TechGroup {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
