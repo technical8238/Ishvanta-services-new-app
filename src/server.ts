@@ -1,6 +1,7 @@
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
+  createWebRequestFromNodeRequest,
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
@@ -10,7 +11,11 @@ import { join } from 'node:path';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+// Initialize AngularNodeAppEngine with trustProxyHeaders enabled
+const angularApp = new AngularNodeAppEngine({ trustProxyHeaders: true });
+
+// Trust proxy headers for deployment environments (GitHub Codespaces, etc.)
+app.set('trust proxy', 1);
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -39,8 +44,10 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
+  // Create a web request with trustProxyHeaders enabled
+  const webRequest = createWebRequestFromNodeRequest(req, true);
   angularApp
-    .handle(req)
+    .handle(webRequest)
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
@@ -63,6 +70,16 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
 }
 
 /**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
+ * Custom request handler that trusts proxy headers.
+ * This is used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
-export const reqHandler = createNodeRequestHandler(app);
+export const reqHandler = async (req: any, res: any) => {
+  // Create a web request with trustProxyHeaders enabled
+  const webRequest = createWebRequestFromNodeRequest(req, true);
+  const response = await angularApp.handle(webRequest);
+  if (response) {
+    writeResponseToNodeResponse(response, res);
+  } else {
+    res.status(404).send('Not found');
+  }
+};
